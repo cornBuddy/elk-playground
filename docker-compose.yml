@@ -14,46 +14,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - ./elasticsearch/elasticsearch.lb.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-
-  es-master-1:
-    build: elasticsearch/.
-    hostname: es-master-1
-    container_name: es-master-1
-    environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - ./elasticsearch/elasticsearch.master.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-
-  es-data-node-1:
-    build: elasticsearch/.
-    hostname: es-data-node-1
-    container_name: es-data-node-1
-    environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - ./elasticsearch/elasticsearch.data-node.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-
-  es-data-node-2:
-    build: elasticsearch/.
-    hostname: es-data-node-2
-    container_name: es-data-node-2
-    environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - ./elasticsearch/elasticsearch.data-node.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
   kibana:
     build: kibana/.
@@ -68,5 +29,6 @@ services:
     build: logstash
     hostname: logstash
     container_name: logstash
-    environment:
-      - "xpack.monitoring.elasticsearch.url=http://elasticsearch:9200"
+    volumes:
+      - ./logstash/es-logs.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./logstash/logstash.yml:/usr/share/logstash/config/logstash.yml

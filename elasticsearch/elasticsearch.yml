@@ -6,7 +6,5 @@ network.host: 0.0.0.0
 
 node:
   name: elasticsearch
-  master: false
-  data: false
-
-discovery.zen.ping.unicast.hosts: "es-master-1"
+  master: true
+  data: true
