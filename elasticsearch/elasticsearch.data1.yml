@@ -10,3 +10,6 @@ node:
   data: true
 
 discovery.zen.ping.unicast.hosts: "es-data-2"
+
+path:
+  logs: /var/log/elasticsearch

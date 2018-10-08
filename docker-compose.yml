@@ -37,6 +37,7 @@ services:
         hard: -1
     volumes:
       - ./elasticsearch/elasticsearch.data1.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch/log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties
 
   es-data-2:
     build: elasticsearch/.
@@ -50,3 +51,4 @@ services:
         hard: -1
     volumes:
       - ./elasticsearch/elasticsearch.data2.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./elasticsearch/log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties
