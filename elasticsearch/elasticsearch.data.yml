@@ -1,0 +1,10 @@
+---
+
+cluster.name: data-cluster
+
+network.host: 0.0.0.0
+
+node:
+  name: "${HOSTNAME}"
+  master: true
+  data: true
