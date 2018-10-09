@@ -11,6 +11,10 @@ node:
 
 discovery.zen.ping.unicast.hosts: es-data-1
 
+xpack.monitoring.enabled: true
+
+xpack.monitoring.collection.interval: 10s
+
 xpack.monitoring.exporters:
   my_remote:
     type: http
