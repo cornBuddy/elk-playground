@@ -15,6 +15,7 @@ xpack.security.enabled: true
 
 xpack.security.authc.accept_default_password: true
 
-xpack.security.authc.anonymous.roles: ["monitoring_user"]
-
-xpack.security.authc.anonymous.authz_exception: true
+xpack.security.authc.anonymous:
+  username: anonymous_user
+  roles: ["monitoring_user"]
+  authz_exception: true

@@ -46,9 +46,5 @@ services:
     build: kibana/.
     hostname: kibana
     container_name: kibana
-    environment:
-      - "ELASTICSEARCH_URL=http://elasticsearch:9200"
-      - "xpack.monitoring.elasticsearch.url=http://elasticsearch:9200"
-      - "xpack.monitoring.collection.enabled=true"
     ports:
       - 5601:5601

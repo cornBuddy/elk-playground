@@ -22,4 +22,7 @@ xpack.monitoring.exporters:
     connection:
       timeout: 6s
       read_timeout: 60s
+    auth:
+      username: anonymous_user
+      password: changeme
     index.name.time_format: YYYY-MM
