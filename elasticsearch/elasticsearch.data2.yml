@@ -1,0 +1,21 @@
+---
+
+cluster.name: data-cluster
+
+network.host: 0.0.0.0
+
+node:
+  name: "${HOSTNAME}"
+  master: true
+  data: true
+
+discovery.zen.ping.unicast.hosts: es-data-1
+
+xpack.monitoring.exporters:
+  my_remote:
+    type: http
+    host: ["elasticsearch:9200"]
+    connection:
+      timeout: 6s
+      read_timeout: 60s
+    index.name.time_format: YYYY-MM

@@ -29,6 +29,19 @@ services:
     volumes:
       - ./elasticsearch/elasticsearch.data.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
+  es-data-2:
+    build: elasticsearch/.
+    hostname: es-data-2
+    container_name: es-data-2
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearch/elasticsearch.data.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+
   kibana:
     build: kibana/.
     hostname: kibana
@@ -38,10 +51,10 @@ services:
     ports:
       - 5601:5601
 
-  logstash:
-    build: logstash
-    hostname: logstash
-    container_name: logstash
-    volumes:
-      - ./logstash/es-logs.conf:/usr/share/logstash/pipeline/logstash.conf
-      - ./logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
+  # logstash:
+  #   build: logstash
+  #   hostname: logstash
+  #   container_name: logstash
+  #   volumes:
+  #     - ./logstash/es-logs.conf:/usr/share/logstash/pipeline/logstash.conf
+  #     - ./logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
