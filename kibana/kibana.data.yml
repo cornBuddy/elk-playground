@@ -1,0 +1,8 @@
+---
+
+server.name: kibana-data
+server.host: "0"
+elasticsearch.url: http://es-data-1:9200
+
+xpack.monitoring.enabled: true
+xpack.monitoring.elasticsearch.url: http://es-data-1:9200

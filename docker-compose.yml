@@ -3,12 +3,12 @@
 version: '3'
 
 services:
-  elasticsearch:
+  elasticsearch-logs:
     build: elasticsearch/.
-    hostname: elasticsearch
-    container_name: elasticsearch
+    hostname: elasticsearch-logs
+    container_name: elasticsearch-logs
     environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
     ulimits:
       memlock:
         soft: -1
@@ -21,7 +21,7 @@ services:
     hostname: es-data-1
     container_name: es-data-1
     environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
     ulimits:
       memlock:
         soft: -1
@@ -34,7 +34,7 @@ services:
     hostname: es-data-2
     container_name: es-data-2
     environment:
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
     ulimits:
       memlock:
         soft: -1
@@ -42,9 +42,11 @@ services:
     volumes:
       - ./elasticsearch/elasticsearch.data2.yml:/usr/share/elasticsearch/config/elasticsearch.yml
 
-  kibana:
+  kibana-logs:
     build: kibana/.
-    hostname: kibana
-    container_name: kibana
+    hostname: kibana-logs
+    container_name: kibana-logs
     ports:
       - 5601:5601
+    volumes:
+      - ./kibana/kibana.logs.yml:/usr/share/kibana/config/kibana.yml

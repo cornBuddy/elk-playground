@@ -1,0 +1,8 @@
+---
+
+server.name: kibana-logs
+server.host: "0"
+elasticsearch.url: http://elasticsearch-logs:9200
+
+xpack.monitoring.enabled: true
+xpack.monitoring.elasticsearch.url: http://elasticsearch-logs:9200
